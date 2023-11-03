@@ -1,0 +1,27 @@
+{
+  "name": "nodejs",
+  "version": "0.0.0",
+  "description": "Practicas y ejemplos para la capacitacion NodeJs",
+  "main": "index.js",
+  "scripts": {
+    "test": "node --watch .",
+    "deploy": "git push --all"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fundacion-pescar-lxv14/nodejs.git"
+  },
+  "keywords": [
+    "nodejs",
+    "backend",
+    "runtime environment",
+    "javascript",
+    "server side"
+  ],
+  "author": "Cristian Racedo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fundacion-pescar-lxv14/nodejs/issues"
+  },
+  "homepage": "https://github.com/fundacion-pescar-lxv14/nodejs#readme"
+}
