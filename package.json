@@ -4,8 +4,8 @@
   "description": "Practicas y ejemplos para la capacitacion NodeJs",
   "main": "index.js",
   "scripts": {
-    "test": "node --watch .",
-    "deploy": "git push --all"
+    "dev": "node --watch .",
+    "prod": "git push origin --all"
   },
   "repository": {
     "type": "git",
