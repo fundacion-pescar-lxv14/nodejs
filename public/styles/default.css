@@ -6,3 +6,16 @@
 body{
     margin: 0;
 }
+
+.GET{
+    background-color: var(--bs-primary);
+}
+.POST{
+    background-color: var(--bs-success);
+}
+.PUT{
+    background-color: var(--bs-warning);
+}
+.DELETE{
+    background-color: var(--bs-danger);
+}

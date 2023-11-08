@@ -5,16 +5,22 @@ const { readFile } = require('node:fs');
 const HOST = process.env.HOST ?? "127.0.0.1";
 const PORT = process.env.PORT ?? 3000;
 // Modulos de Aplicacion
-const nav = require('./app/nav');
-const footer = require('./app/footer');
+const Content = require('./app/content');
 // Servidor LOCAL NodeJS
 const server = http.createServer((req, res) => {
-    const { url, method } = req;
-    const dir = './public';
-    const head =[200, { 'Content-Type': 'text/html; charset=utf-8'}]
-    let title = "";
-    let notFound = false;
-    switch(url.toLowerCase()){
+    let 
+        file = "index.html",
+        notFound = false,
+        counter = 0,
+        title = "";
+
+    const
+        dir = './public',
+        head = { 
+            'Content-Type': "text/html; charset=utf-8",
+            'desarrollador': "Cristian Racedo & compañia"
+        }
+    switch(req.url.toLowerCase()){
         case '/':
         case '/index':
         case '/index.html':
@@ -30,28 +36,29 @@ const server = http.createServer((req, res) => {
         case "/gallery":
             title ="<h1>Galería de Imágenes</h1>";
         break;
+        case "/styles":
+        case "/styles.css":
+        case "/styles/default.css":
+        case "/css/styles.css":
+            file = "styles/default.css";
+            head['Content-Type'] = "text/css; charset=utf-8";
+        break;
         default:
-            title =`<h1>Error 404<br> Página ${url} no encontrada</h1>`
+            title =`<h1>Error 404<br> Página ${req.url} no encontrada</h1>`
             notFound = true;
     }
     if (notFound) {
-        res.writeHead(...head);
+        res.writeHead(404, head);
         res.end(title);
     }
-    else readFile(`${dir}/index.html`, (err, data) => {
+    else readFile(`${dir}/${file}`, (err, data) => {
         if (err){
-            res.writeHead(...head);
+            res.writeHead(500, head);
             res.end(`<h1>Error 500<br> Internal Server Error</h1>`);
         }
         else {
-            res.writeHead(...head);
-            res.end(
-                data.toString()
-                .replace("{{Title}}", title)
-                .replace("{{nav}}", nav)
-                .replace("{{content}}", `Metodo ${method} exitoso en la ruta ${url}`)
-                .replace("{{footer}}", footer)
-            );
+            res.writeHead(200, head);
+            res.end(Content(data,{ title, ...req })) 
         }
     })
 });
