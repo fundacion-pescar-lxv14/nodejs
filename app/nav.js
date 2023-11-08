@@ -1,5 +1,5 @@
 const Nav = () =>
-`<nav class="navbar navbar-dark">
+`<nav class="navbar navbar-dark bg-dark bg-gradient">
     <ul class="navbar-nav">
         <li><a class="nav-link" href="/">Inicio</a></li>
         <li><a class="nav-link" href="/about">Acerca</a></li>
