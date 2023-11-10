@@ -1,0 +1,104 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Ubuntu', 'Raleway', 'Century Gothic', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body,
+h1,
+h2,
+h3,
+header p,
+.menu,
+.list-unstyled{
+    margin: 0;
+}
+iframe{
+    border: 0;
+}
+.list-unstyled{
+    padding: 0;
+}
+.menu,
+.list-unstyled{
+    list-style: none;
+}
+:is(.menu, .social) a{
+    text-decoration: none;
+}
+
+header{
+    padding : 1.5rem;
+}
+nav{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5rem;
+    background-color: #36c;
+}
+.menu{
+    width: 100%;
+    padding: .25rem;
+    background-color: #36c;
+}
+nav a{
+    color: #ccc;
+}
+.menu a:hover{
+    color: #eee;
+}
+.toggler::before{
+    content: '\2630';
+}
+form{
+    margin: auto;
+    max-width: 540px;
+    display: grid;
+    gap: .5rem;
+    padding: 1.5rem 2rem;
+}
+fieldset{
+    position: relative;
+    border-radius: .25rem;
+    border: 1px solid #ccc;
+    padding: 0;
+    height: 3rem;
+}
+
+fieldset :is(input,textarea,select){
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    top: 50%;
+    border: none;
+    padding: .2rem 1rem;
+    outline: none;
+    transform: translateY(-50%);
+    background-color: transparent;
+}
+fieldset label{
+    position: absolute;
+    width: auto;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+    transition: .2s linear;
+}
+
+fieldset :focus ~ label{
+    color: #3338;
+    top: 0;
+    left: 0;
+    transform: scale(.8);
+}
+.btn{
+    padding: 1rem;
+    border-radius: .25rem;
+    border: none;
+    background-color: transparent;
+}
+.btn:hover{
+    background-color: #ccc;
+}
