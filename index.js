@@ -4,7 +4,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const startMsg = `Aplicacion ejecutandose en el puerto ${PORT}`
 
-const products = [
+const posts = [
     {
       
       postId: 1,
@@ -34,7 +34,6 @@ const products = [
       comments: []
     },
     {
-      
       postId: 3,
       postTitle: 'Escritorio ergonomico Moderno para Oficina',
       description: 'Te duele la espalda, cansado de tener que levantarte para estirar las piernas cada 30 minutos, con este escritorio ideal para las dimensiones humanas, no tendras mas problemas',
@@ -101,7 +100,7 @@ const products = [
 ]
 const users = [
     {
-            username: 'cristian',
+      username: 'cristian',
       email: 'cristiandracedo@ymail.com'
     },
     {
@@ -125,7 +124,7 @@ const users = [
       }
     },
     {
-            username: 'Antonette',
+      username: 'Antonette',
       email: 'Shanna@melissa.tv',
       userData: {
         name: 'Ervin Howell',
@@ -185,11 +184,10 @@ const users = [
       }
     },
     {
-            username: 'c215714n',
+      username: 'c215714n',
       email: 'cristiandracedo@hotmail.com',
       userData: {
-        firstName: 'Cristian',
-        lastName: 'Racedo',
+        name: 'Cristian Racedo',
         age: 33,
         gender: 'masculino',
         personalId: { type: 'DNI', number: '35336446' }
@@ -221,27 +219,77 @@ const users = [
 app.use("/", express.static("public"));
 
 // Rutas de la API
-app.get('/products/:category?/:id?', (req, res) => {
-    const { id, category } = req.params;
-    const filter = [];
-    // Si Existe categoria (filtramos)
-    products.map(product => 
-        product.categories.map(c => 
-        c === category  ? filter.push(product) : null )
+/**
+ * posts/ -> Muestra todos los productos
+ * posts/:id -> Muestra el producto con el id elegido
+ * posts/category/:category -> muestra los productos de la categoria elegida
+ * posts/category/:category/:id -> muestra el producto de la categoria elegida con el id elegido
+ */
+
+/** Todas las Publicaciones | Aquella con el Id especificado */
+app.get('/posts/:id?', (req, res) => {
+  const { id } = req.params 
+  !id ? res.json(posts) : // Todas las Publicaciones
+  res.json(posts.filter(p => p.postId === Number(id))) // Filtro de Publicacion
+})
+
+/** Publicaciones de la Categoria especificada | Implementacion de Consulta */
+app.get('/posts/category/:category?', (req, res) => {
+  const { category } = req.params
+  const { min, max, author } = req.query
+  const filter = []
+  posts.map(post => post.categories.map(c => c === category ? 
+    filter.push(post) : null
+  ))
+  // Verificamos que se hayan enviado argumentos de busqueda
+  if (req.query.length != 0){
+    // Filtramos por precio minimo y maximo
+    if (min && max && author) res.json( filter.filter(p => 
+      p.user === author &&
+      p.price >= Number(min) &&
+      p.price <= Number(max) 
+    ))
+    if (min && max) res.json( filter.filter(p => 
+      p.price >= Number(min) &&
+      p.price <= Number(max)
+    ))
+    if (min) res.json( filter.filter(p => p.price >= Number(min)))
+    if (max) res.json( filter.filter(p => p.price <= Number(max)))
+    // Filtramos por Autor
+    if (author) res.json( filter.filter(p => p.user === author) )
+  }
+  else res.json(filter)
+})
+
+/** Todos los usuarios | Aquel cuyo nombre sea el indicado */
+app.get('/users/:username?', (req, res) => {
+    const {username} = req.params
+    const {email, name, phone } = req.query
+    const filter = []
+    // Filtro por Consulta
+    if (req.query.length != 0){
+      if (email) res.json(users.filter(u => u.email.toLowerCase() === email.toLowerCase()))
+      if (name) {
+        users.map( u => u.userData && u.userData.name.toLowerCase() === name.toLowerCase() ? filter.push(u) : null)
+        res.json(filter)
+      }
+      if (phone) {
+        users.map(u => {
+          if (
+            u.userData && 
+            u.userData.phone && 
+            u.userData.phone.toLowerCase() === phone.toLowerCase()
+          ) filter.push(u)
+        })
+        res.json(filter)
+      }
+    }
+    // Filtro por Nombre de usuario
+    if (username) res.json(
+      users.filter(u => u.username.toLowerCase() === username.toLowerCase())
     )
-    // Si existe id (filtramos)
-    const selected = filter.filter(product => product.postId === Number(id))
-    // Mostramos todos los productos
-    if(!id && !category) res.json(products)
-    if(!id) res.json(filter)
-    else res.json(selected)
-})
-app.get('/users', (req, res) => {
-    res.json(users)
-})
-app.get('/users/:username', (req, res) => {
-    account
-    res.json(account)
+    // Todos los usuarios
+    else res.json(users)
 })
 
 app.listen(PORT, console.log(startMsg))
