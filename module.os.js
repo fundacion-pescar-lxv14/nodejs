@@ -8,7 +8,9 @@ Device Info:
     - Version: ${os.release()}
     - Plataforma: ${os.platform()}
     - Arquitectura: ${os.arch()}
-    - Tiempo de actividad: ${Math.round(os.uptime() / 60 / 60)}hs
-    - MEMORIA RAM: ${Math.round(os.totalmem() / 1024 / 1024)}MB
+    - Tiempo de actividad: ${Math.round(os.uptime() / 60**2)}hs
+    - MEMORIA RAM: ${Math.round(os.totalmem() / 1024**3)}GB
+    - DISPONIBLE: ${Math.round(os.freemem() / 1024**3)}GB
 `
+
 module.exports = deviceInfo;
