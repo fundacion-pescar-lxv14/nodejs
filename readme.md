@@ -23,7 +23,7 @@ Modulo que provee informacion sobre el proceso de NodeJS que se esta ejecutando 
 
 | Propiedad | Tipo | Descripcion |
 |--|--|--|
-| __arch__ | String | Propiedad que devuelve la arquitectura del sistema operativo actual |
+| __arch__ | _String_ | Propiedad que devuelve la arquitectura del sistema operativo actual |
 | __argv__ | _Array_ | Propiedad que almacena los _argumentos_ pasados a la aplicacion que se esta ejecutando actualmente. |
 | __cpuUsage__ | _Function_ | Metodo que devuelve un objeto que indica el consumo de memoria del procesador |
 | __cwd__ | _Function_ | Metodo que devuelve un string con la ruta absoluta del directorio de trabajo actual |
