@@ -114,3 +114,34 @@ export const users = [
       }
     }
 ]
+const User = function(name, email, userData){
+  this.userName = name;
+  this.email = email;
+  this.userData = userData;
+}
+User.Create = (User, callBack) =>{
+  users.push(User)
+  return callBack(null, User)
+}
+User.Read = (id, callBack) =>{
+  const data = !id ? users : 
+    users.filter(u => u.username.toLowerCase() === id.toLowerCase())
+  return callBack(null, data)
+}
+User.Update = (id, data, callBack) => {
+  for(let i in users)
+  if(users[i].username.toLowerCase() === id.toLowerCase()){ 
+    users[i] = data 
+    return callBack(null, users[i])
+  }
+  return callBack(true, null);
+}
+User.Delete = (id, callBack) =>{
+  for (let i in users) 
+  if (users[i].username.toLowerCase() === id.toLowerCase()){ 
+    users.splice(i, 1) 
+    return callBack(null, users.length)
+  }
+  return callBack(true, null);
+}
+export default User;
