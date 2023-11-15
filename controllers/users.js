@@ -21,8 +21,9 @@ if(req.params.id) User.Update(req.params.id, req.body, (err, data) =>
         code: 200,
         message: "El usuario ha sido actualizado",
         data,
-    })
-)} 
+    }))
+else res.json({message: "No especifico el usuario a actualizar"})
+} 
 export const deleteUser = (req, res) => { 
 if(req.params.id) User.Delete( req.params.id, (err, data) => 
     err ? res.json(err) :  
@@ -30,5 +31,6 @@ if(req.params.id) User.Delete( req.params.id, (err, data) =>
         status: "OK",
         code: 200,
         message: "El usuario ha sido eliminado",
-    })
-)}
+    }))
+else res.json({message: "No especifico el usuario a eliminar"})
+}
