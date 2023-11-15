@@ -8,11 +8,9 @@ const startMsg = `Aplicacion ejecutandose en el puerto ${PORT}`
 
 // Request Body Parser (Middleware)
 app.use(express.urlencoded({extended: true}));
-
 // Rutas de la API
 app.use("/users", userRouter );
 app.use("/posts", postRouter );
-
 // Rutas Estaticas para el Frontend
 app.use("/", express.static("public"));
 

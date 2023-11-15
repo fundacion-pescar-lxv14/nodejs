@@ -6,7 +6,10 @@ export const createPost = (req, res) => {
         Post.Create(newPost, (err, data) =>  err ? res.json(err) : res.json(data))
 }
 export const getPosts = (req, res) => {
-    Post.Read(req.params.id, (err, data) => err ? res.json(err) : res.json(data))
+    Post.Read(req.params.id, req.params.field ?? 'product', (err, data) => err ? res.json(err) : res.json(data))
+}
+export const getFilteredPosts = (req, res) => {
+    Post.Filter(req.query, (err, data) => err ? res.json(err) : res.json(data))
 }
 export const updatePost = (req, res) => {
     Post.Update(req.params.id, req.body, 
