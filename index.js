@@ -1,15 +1,14 @@
 import express from 'express'
 import userRouter from './routes/users.js'
-import { urlencoded } from 'express';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 const startMsg = `Aplicacion ejecutandose en el puerto ${PORT}`
-app.use(urlencoded({extended: true}));
+
+// Rutas de la API
+app.use("/users", userRouter );
 
 // Rutas Estaticas para el Frontend
 app.use("/", express.static("public"));
-// Rutas de la API
-app.use("/users", userRouter );
 
 app.listen(PORT, console.log(startMsg))
