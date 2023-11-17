@@ -1,0 +1,25 @@
+html
+    head
+        meta(charset="utf-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3.5")
+        title= nombre
+        link(rel="stylesheets" href="/public/styles/default.css")
+    body
+        nav
+            a(href="/")=nombre
+            button.toggler
+            ul.menu
+                li
+                    a.active inicio
+                li 
+                    a galeria
+                li
+                    a contacto
+        header#header
+            h1= nombre
+            p= descripcion
+        main
+            p Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque voluptatibus consectetur error laboriosam voluptates a dolorum commodi quaerat ad, optio voluptas dicta quidem maiores hic est! Commodi maiores ratione esse?
+        footer#footer
+            p= `${autor} - v${version} | Todos los derechos reservados`
+        script(src="/public/scripts/index.js")
