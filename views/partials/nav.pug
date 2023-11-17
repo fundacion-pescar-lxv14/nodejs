@@ -2,9 +2,6 @@ nav
     a(href="/")=nombre
     button.toggler
     ul.menu
-        li
-            a.active inicio
-        li 
-            a galeria
-        li
-            a contacto
+        each link in menu
+            li
+                a(href=link )= link

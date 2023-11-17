@@ -1,7 +1,11 @@
 footer#footer
     .social
-        a(href="https://facebook.com") facebook
-        a(href="https://instagram.com") instagram
-        a(href="https://twitter.com") twitter
-    p= `${autor} - v${version} | Todos los derechos reservados`
+        each item in social
+            a(
+                class="fa-brands " + item.icon 
+                href=item['link'] 
+                target="_blank"
+            )
+            
+    p #{autor} - v#{version} | Todos los derechos reservados
 script(src="/scripts/index.js")

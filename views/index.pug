@@ -1,8 +1,20 @@
 html(lang="es")
+    // Importacion
     include ./partials/head.pug
     body
         include ./partials/nav.pug
         include ./partials/header.pug
         main
-            p Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque voluptatibus consectetur error laboriosam voluptates a dolorum commodi quaerat ad, optio voluptas dicta quidem maiores hic est! Commodi maiores ratione esse?
+            // Variables
+            h2=title
+            p=description
+            // Condicional
+            if (posts)
+                // Iteracion
+                each post in posts
+                    include ./layouts/post.pug
+            else if (user)
+                include ./layouts/user.pug
+            else
+                p no se encontraron Elementos
         include ./partials/footer.pug
