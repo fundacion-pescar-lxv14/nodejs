@@ -4,16 +4,13 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const startMsg = `Aplicacion ejecutandose en el puerto ${PORT}`
 
-app.get('/', (req, res) => {
-    res.status(200).send("<h1>Bienvenido a Pescar Shop</h1>")
-})
+const data = {
+    nombre: "Pescar Shop",
+    descripcion: "Tienda de articulos de pesca",
+    version: "0.1.0",
+    autor: "Pescar SA"
+}
 
-app.post('/', (req, res) => {
-    res.status(200).send("<h1>Solicitud Recibida exitosamente</h1>")
-})
-
-app.get("*", (req, res) => {
-    res.status(404).send(`<h1>Error 404: <br><small>No se encontro la ruta ${req.url}</small> </h1>`)	
-})
+app.get('/', (req, res) => { console.log(req, res) })
 
 app.listen(PORT, console.log(startMsg))
