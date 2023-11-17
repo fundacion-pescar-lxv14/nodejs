@@ -14,7 +14,6 @@ export const user = {
     name: "Cristian",
     email: "Cristiandracedo@hotmail.com"
 }
-
 export const posts = {  
     title: 'Posts',
     description: 'All Posts',
