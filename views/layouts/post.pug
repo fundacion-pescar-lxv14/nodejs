@@ -1,0 +1,12 @@
+article 
+    h3 #{comment.title}
+    <img #{comment.img}/>
+    ul 
+        each d  in descripction
+            li #{d}
+    h4 Comentarios
+    each comment in comments
+        p
+            strong
+            |  #{comment.author}
+            |  #{comment.body}
