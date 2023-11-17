@@ -1,5 +1,5 @@
 import express from 'express';
-import { data } from './data.js';
+import { data, posts, user } from './data.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -9,12 +9,10 @@ const startMsg = `Aplicacion ejecutandose en el puerto ${PORT}`
 app.set("view engine", "pug")
 app.use("/", express.static("views"))
 
-app.get('/', (req, res) => { 
-  const content = {
-    title: 'Home',
-    description: 'Home page'
-  }
-  res.render('index', {...data, ...content})  
-})
-
+// Perfile de Usuario
+app.get('/profile', (req, res) => res.render('index', {...data, user})) // Agregamos la clave user con sus valores
+// Publicaciones
+app.get('/posts', (req, res) => res.render('index', {...data, ...posts})) // Unificamos las claves de posts
+// Ruta General
+app.get('*', (req, res) => res.render("index", data))
 app.listen(PORT, console.log(startMsg))
