@@ -1,12 +1,12 @@
 article 
-    h3 #{comment.title}
-    <img #{comment.img}/>
+    h3 #{post.title}
+    <img #{img}/>
     ul 
-        each d  in descripction
-            li #{d}
-    h4 Comentarios
-    each comment in comments
-        p
-            strong
-            |  #{comment.author}
-            |  #{comment.body}
+        each d in post.description
+            li=d
+    div
+        h4 Comentarios
+        each comment in post.comments
+            p   #{comment.body}
+                br
+                strong #{comment.author}

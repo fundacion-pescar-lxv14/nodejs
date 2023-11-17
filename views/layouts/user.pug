@@ -1,8 +1,12 @@
 section
     header
-        h3
-    p
+        h3 #{user.name}
+    p #{user.email}
+    h4 Intereses
     ul 
-        li
-            a
+        if (user.interests)
+            each interest in user.interests
+                li=interest
+        else
+            li No hay intereses agregados
     footer
