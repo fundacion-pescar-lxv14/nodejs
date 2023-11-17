@@ -1,0 +1,11 @@
+<footer>
+    <div class="social">
+    <% social.forEach(({link, icon})=>{ %>
+        <a class="fa-brands <%= icon %>" href="<%= link %>"></a>
+    <% }) %>
+    </div>
+    <p>
+        <strong>&copy;<%= autor %> - v<%- version%></strong>
+        | Todos los derechos reservados
+    </p>
+</footer>
