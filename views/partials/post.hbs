@@ -1,0 +1,16 @@
+<article class="col-md card m-2">
+    <header class="card-header">
+        <h2>{{this.title}}</h2>
+        <p>{{this.description}}</p>
+    </header>
+    <footer class="card-footer">
+        <ul class="d-grid gap-2">
+        {{#each this.comments}}
+            <li class="list-group">
+                <strong class="list-group-item bg-secondary">{{this.author}}</strong>
+                <span class="list-group-item">{{this.body}}</span>
+            </li>
+        {{/each}}
+        </ul>
+    </footer>
+</article>
