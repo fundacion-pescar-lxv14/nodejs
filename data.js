@@ -8,7 +8,9 @@ export const data = {
         { link: "https://facebook.com", icon: "fa-facebook" },
         { link: "https://twitter.com", icon: "fa-twitter" },
         { link: "https://instagram.com", icon: "fa-instagram" },
-    ] 
+    ],
+    posts: null,
+    user: null,
 }
 export const user = {
     name: "Cristian",
