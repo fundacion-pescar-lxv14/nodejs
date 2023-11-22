@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+{{>head}}
+<body>
+    {{>nav}}
+    {{>header}}
+    <main>
+        <section>
+            <aside>
+                <h2>Filtar</h2>
+                <ul>
+                    <li></li>
+                </ul>
+            </aside>
+        {{#each posts}}
+            {{>post}}
+        {{/each}}
+        </section>
+    </main>
+    {{>footer}}
+</body>
+</html>

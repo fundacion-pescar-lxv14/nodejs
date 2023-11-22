@@ -5,31 +5,19 @@
 <body>
     {{>nav}}
     {{>header}}
-    <main>
+    <main class="container p-3">
         {{!-- Utilizacion de Variables --}}
         <h2>{{title}}</h2>
         <p>{{description}}</p>
         {{!-- Implementacion de Condicionales --}}	
         {{#if user}}
-            <section>
-                <h2>{{user.name}}</h2>
-                <p>{{user.email}}</p>
-            </section>
-        {{else if posts }}
+            {{>user}}
+        {{else if posts}}
+            <section class="row">
             {{#each posts}}
-                <article>
-                    <h2>{{this.title}}</h2>
-                    <p>{{this.description}}</p>
-                    <footer>
-                        <ul>
-                        {{#each this.comments}}
-                            <strong>{{this.author}}</strong>
-                            <span>{{this.body}}</span>
-                        {{/each}}
-                        </ul>
-                    </footer>
-                </article>
+                {{>post}}
             {{/each}}
+            </section>
         {{else}}
             <p>No se encontraron elementos</p>
         {{/if}}
