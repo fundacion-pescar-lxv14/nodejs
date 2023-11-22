@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        {{#each menu}}
+        <a href="{{this}}">{{this}}</a>
+        {{/each}}
+    </nav>
+    <header>
+        <h1>{{nombre}}</h1>
+        <p>{{descripcion}}</p>
+    </header>
+    <main>
+        {{#if user}}
+            <section>
+                <h2>{{user.name}}</h2>
+                <p>{{user.email}}</p>
+            </section>
+        {{else if posts }}
+            {{#each posts}}
+                <article>
+                    <h2>{{this.title}}</h2>
+                    <p>{{this.description}}</p>
+                    <footer>
+                        <ul>
+                        {{#each this.comments}}
+                            <strong>{{this.author}}</strong>
+                            <span>{{this.body}}</span>
+                        {{/each}}
+                        </ul>
+                    </footer>
+                </article>
+            {{/each}}
+        {{else}}
+            <p>No se encontraron elementos</p>
+        {{/if}}
+        {{!-- Iteracion --}}
+    </main>
+    <footer>
+        <div class="social">
+            {{#each social}}
+                <a class="fa-brand {{this.icon}}" href="{{this.link}}"></a>
+            {{/each}}
+        </div>
+        <p>&copy;{{autor}} v{{version}} | Todos los derechos reservados</p>
+    </footer>
+</body>
+</html>
