@@ -5,9 +5,18 @@
 <body>
     <%- include("./partials/nav.ejs") %>
     <%- include("./partials/header.ejs") %>
-    <main>
-
-    </main>
+    <main class="container">
+        <!-- "&lt;%=": Utilizacion de Variables -->
+        <h2><%= locals?.title %></h2>
+        <p><%= locals?.description %></p>
+        <!-- "&lt;%": Interpolacion Condicional -->
+        <% if(locals?.posts) { %>
+            <%- include("./layouts/post.ejs") %>
+        <% } else if (locals?.user) { %>
+            <%- include("./layouts/user.ejs") %>
+        <% } else { %>
+            <%- include("./layouts/error.ejs") %>
+        <% } %>
     <%- include("./partials/footer.ejs") %>
 </body>
 </html>
