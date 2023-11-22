@@ -9,8 +9,6 @@ export const data = {
         { link: "https://twitter.com", icon: "fa-twitter" },
         { link: "https://instagram.com", icon: "fa-instagram" },
     ],
-    posts: null,
-    user: null,
 }
 export const user = {
     name: "Cristian",
@@ -29,6 +27,16 @@ export const posts = {
             {author: "pepe", body: 'muy bueno'},
             {author: "pepe", body: 'muy bueno'}
             ],
+        },
+        {
+            title: "articulo 2",
+            img: "ruta a la imagen",
+            description: ["el1", "el2", "el3"],
+            comments: [
+                {author: "Tom", body: 'excelente'},
+                {author: "Nemo", body: 'para sumergirme en el mar'},
+                {author: "Dory", body: 'de maravilla'}
+            ]
         }
     ]
 }
