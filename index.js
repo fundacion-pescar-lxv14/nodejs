@@ -1,4 +1,5 @@
 import express from 'express'
+import dbConn from './config/db.js';
 import userRouter from './routes/users.js'
 import postRouter from './routes/posts.js'
 
