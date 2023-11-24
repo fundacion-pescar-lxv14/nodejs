@@ -14,11 +14,16 @@ export const getPosts = (req, res) => {
         postId ? {postId} : {}
     )
     Post.find(query)
-    .then(data => res.json(data))
+    .then(data => data.length > 0 ? 
+        res.json(data) : 
+        res.json({message: "No se encontraron resultados"}))
     .catch(err => res.json(err.message))
 }
 export const getFilteredPosts = (req, res) => {
-    
+    const {key, val} = req.params;
+    (key && val) && Post.find({[key]: val})
+    .then(data => res.json(data))
+    .then(err => res.json(err.message))
 }
 export const updatePost = (req, res) => {
     const {postId} = req.params;
