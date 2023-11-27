@@ -29,6 +29,6 @@ app.use("/users", userRouter );
 app.use("/posts", postRouter );
 // Rutas Estaticas para el Frontend
 app.use("/", express.static("public"));
-app.use("/dist", express.static("./node_modules/bootstrap/dist"));
 
+/** EJECUCION */
 app.listen(PORT, console.log(startMsg))

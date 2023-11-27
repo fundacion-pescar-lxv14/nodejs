@@ -1,4 +1,10 @@
 import { Post } from '../models/posts.js'
+const config = {
+    Appname: process.env.APP_NAME ?? "Aplicacion",
+    description: process.env.APP_DESCRIPTION ?? "Aplicacion desarrollada con NodeJS",
+    author: process.env.APP_AUTHOR ?? "muchos desarrolladores",
+}
+const resolve = (data) => JSON.parse(JSON.stringify(data))
 
 export const createPost = async(req, res) => {
     const newPost = new Post(req.body);
@@ -14,15 +20,15 @@ export const getPosts = (req, res) => {
         postId ? {postId} : {}
     )
     Post.find(query)
-    .then(data => data.length > 0 ? 
-        res.json(data) : 
+    .then(posts => posts.length > 0 ? 
+        res.render('index', {...config, posts: resolve(posts)}) : 
         res.json({message: "No se encontraron resultados"}))
     .catch(err => res.json(err.message))
 }
 export const getFilteredPosts = (req, res) => {
     const {key, val} = req.params;
     (key && val) && Post.find({[key]: val})
-    .then(data => res.json(data))
+    .then(posts => res.render('index', posts))
     .then(err => res.json(err.message))
 }
 export const updatePost = (req, res) => {
