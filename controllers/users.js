@@ -1,8 +1,12 @@
 import User from "../models/users.js";
+import { config, resolve } from '../utils/helpers.js'
 
 export const getUsers = async (req, res) => {
-    const users = await User.find();
-    res.json(users);
+    const {username} = req.params;
+    const users = username ? await User.find({username}) : await User.find()
+    users.length > 1 ? 
+    res.render('layouts/users', {...config, users: resolve(users)}) :
+    res.render('layouts/profile', {...config, user: resolve(users[0])})
 }
 export const createUser = async (req, res) => {
     const user = new User(req.body);
