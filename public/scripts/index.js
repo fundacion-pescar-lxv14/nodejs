@@ -1,6 +1,5 @@
-const toggler = document.querySelector('nav .toggler')
-const menu = document.querySelector('nav .menu')
+import * as bs from './bootstrap.bundle.js';
 
-toggler.addEventListener('click', () => {
-    menu.classList.toggle('active')
-})   
+document.addEventListener('load', (e) => {
+    log(description);
+})
