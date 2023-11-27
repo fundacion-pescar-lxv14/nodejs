@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{App}}</title>
+    <title>{{Appname}}</title>
+    <link rel="stylesheet" href="styles/default.css">
 </head>
 <body>
     <header>
 
     </header>
+    {{> navbar}}
     <main>
-        <h2>{{Title}}</h2>
+        <h2>{{Appname}}</h2>
         {{#each posts}}
         <article>
             <h3>{{this.postTitle}}</h3>
@@ -46,5 +48,9 @@
     <footer>
 
     </footer>
+    <script src="scripts/index.js" type="module">
+        const description = {{description}}
+        console.log({{posts.[0].description}})
+    </script>
 </body>
 </html>
