@@ -16,7 +16,11 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const startMsg = `Aplicacion ejecutandose en el puerto ${PORT}`
 // Motor de Plantillas
-app.engine("hbs", engine({ defaultLayout: '../index', extname: "hbs" }));
+app.engine("hbs", engine({
+    layoutsDir: 'views/layouts',
+    defaultLayout: '../index', 
+    extname: "hbs" 
+}));
 app.set("view engine", "hbs");
 app.set('views', './views');
 

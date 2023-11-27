@@ -1,56 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{Appname}}</title>
-    <link rel="stylesheet" href="styles/default.css">
-</head>
+{{> head }}
 <body>
-    <header>
-
-    </header>
+    {{> header}}
     {{> navbar}}
-    <main>
-        <h2>{{Appname}}</h2>
-        {{#each posts}}
-        <article>
-            <h3>{{this.postTitle}}</h3>
-            <p>{{this.description}}</p>
-            <ul>
-                <li>{{this.product}}</li>
-                <li>{{this.price}}</li>
-                <li>{{this.stock}}</li>
-                <li>{{this.user}}</li>
-            </ul>
-            <p>Publicado el {{this.postDate}}</p>
-            <ul class="d-flex flex-wrap">
-                {{#each this.categories}}
-                    <li class="badge rounded-pill">{{this}}</li>
-                {{/each}}
-            </ul>            
-            <footer>
-                <form action="/posts/comments" method="POST">
-                    <input type="text">
-                    <textarea name="" id="" cols="30" rows="10"></textarea>
-                    <button>Comentar</button>
-                </form>
-                {{#each this.comments}}
-                <div>
-                    <h4>{{this.author}}</h4>
-                    <p>{{this.body}}</p>
-                </div>
-                {{/each}}
-            </footer>
-        </article>
-        {{/each}}
+    <main class="container">
+        <h2>{{Page}}</h2>
+        {{{body}}}
     </main>
-    <footer>
-
-    </footer>
-    <script src="scripts/index.js" type="module">
-        const description = {{description}}
-        console.log({{posts.[0].description}})
-    </script>
+    {{> footer}}
 </body>
 </html>

@@ -1,10 +1,5 @@
 import { Post } from '../models/posts.js'
-const config = {
-    Appname: process.env.APP_NAME ?? "Aplicacion",
-    description: process.env.APP_DESCRIPTION ?? "Aplicacion desarrollada con NodeJS",
-    author: process.env.APP_AUTHOR ?? "muchos desarrolladores",
-}
-const resolve = (data) => JSON.parse(JSON.stringify(data))
+import { config, resolve } from '../utils/helpers.js'
 
 export const createPost = async(req, res) => {
     const newPost = new Post(req.body);
@@ -21,7 +16,7 @@ export const getPosts = (req, res) => {
     )
     Post.find(query)
     .then(posts => posts.length > 0 ? 
-        res.render('index', {...config, posts: resolve(posts)}) : 
+        res.render('layouts/posts', {...config, posts: resolve(posts)}) : 
         res.json({message: "No se encontraron resultados"}))
     .catch(err => res.json(err.message))
 }
