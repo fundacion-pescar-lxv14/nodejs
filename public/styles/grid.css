@@ -1,0 +1,17 @@
+.grid{
+    display: grid;
+}
+.auto{
+    grid-template-columns: repeat(
+        auto-fit, 
+        minmax(min( 100%, var(--size)), 1fr ))
+}
+.small{
+    --size: 240px;
+}
+.medium{
+    --size: 360px;
+}
+.large{
+    --size: 480px;
+}
