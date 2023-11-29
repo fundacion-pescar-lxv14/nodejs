@@ -7,6 +7,7 @@ import morgan from 'morgan';
 // Database Connection
 import dbConn from './config/db.js';
 // Application Routers
+import authRouter from './routes/auth.js';
 import userRouter from './routes/users.js'
 import postRouter from './routes/posts.js'
 
@@ -28,6 +29,7 @@ app.use(morgan('dev'));
 // Request Body Parser (Middleware)
 app.use(express.urlencoded({extended: true}));
 // Rutas de la API
+app.use("/", authRouter);
 app.use("/users", userRouter );
 app.use("/posts", postRouter );
 // Rutas Estaticas para el Frontend
