@@ -4,3 +4,9 @@ export const config = {
     author: process.env.APP_AUTHOR ?? "muchos desarrolladores",
 }
 export const resolve = (data) => JSON.parse(JSON.stringify(data))
+
+export const getQuery = ({body, params:{ postId, val }}) => 
+    body.length > 0  && val ? {...body, [postId]: val } :
+    Number(postId) ? { postId } :
+    postId && val ? { [postId]: val } :
+    body.length > 0 ? {...body} : {}
