@@ -1,0 +1,26 @@
+<form action="/login" method="post" class="col-md-8 col-lg-6 col-xxl-4 d-grid mx-auto p-4 gap-2">
+    <fieldset class="form-floating">
+        <input class="form-control" 
+            id="username" 
+            name="username" 
+            type="text" 
+            placeholder="usuario"
+            required>
+        <label for="username">Ingrese su nombre de usuario</label>
+    </fieldset>
+    <fieldset class="form-floating">
+        <input class="form-control" 
+            id="password" 
+            name="password" 
+            type="password" 
+            placeholder="usuario" 
+            required>
+        <label for="password">Ingrese su Contraseña</label>
+    </fieldset>
+    <button class="btn btn-primary" type="submit">Ingresar</button>
+        {{#if message}}
+            <div class="alert alert-danger">
+                {{message}}
+            </div>
+        {{/if}}
+</form>
