@@ -3,6 +3,12 @@ export const config = {
     description: process.env.APP_DESCRIPTION ?? "Aplicacion desarrollada con NodeJS",
     author: process.env.APP_AUTHOR ?? "muchos desarrolladores",
 }
+export const notFound = {
+    error: true,
+    code: 404,
+    message: "No se encontraron resultados"
+}
+
 export const resolve = (data) => JSON.parse(JSON.stringify(data))
 
 export const getQuery = ({body, params:{ postId, val }}) => 

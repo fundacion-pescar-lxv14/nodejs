@@ -1,5 +1,5 @@
 import { Post } from '../models/posts.js'
-import { config, resolve, getQuery } from '../utils/helpers.js'
+import { config, notFound, resolve, getQuery } from '../utils/helpers.js'
 
 export const createPost = async(req, res) => {
     const newPost = new Post(req.body);
@@ -15,14 +15,8 @@ export const getPosts = (req, res) => {
         res.render('layouts/posts', {...config, posts: resolve(posts)}) : 
         posts.length > 0 ?
         res.render('layouts/post', {...config, posts: resolve(posts[0])}) :
-        res.json({...config, message: "No se encontraron resultados"}))
-    .catch(err => res.json(err))
-}
-export const getFilteredPosts = (req, res) => {
-    const {key, val} = req.params;
-    Post.find({[key]: val})
-    .then(posts => res.render(process.cwd()+'/views/layouts/posts', {...config, posts: resolve(posts)}))
-    .then(err => res.json(err))
+        res.render('layouts/404', {...config, err: notFound}))
+    .catch(err => res.render('layouts/404', err))
 }
 export const updatePost = (req, res) => {
     const {postId} = req.params;
