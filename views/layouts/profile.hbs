@@ -1,0 +1,60 @@
+<article class="row">
+    <h3 class="h2 p-3">
+        <img class="img-thumbnail" 
+            src="/assets/pictures/{{user.picture}}" 
+            alt="{{user.username}}">
+        Perfil de {{user.username}}
+    </h3>
+    <section class="col">
+        <h4>Datos</h4>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <strong class="d-block">Nombre Completo:</strong> 
+                {{user.userData.lastName}} 
+                {{user.userData.name}} 
+                {{user.userData.firstName}}
+            </li>
+            <li class="list-group-item">
+                <strong class="d-block">Correo Electronico:</strong> 
+                {{user.email}}
+            </li>
+            <li class="list-group-item">
+                <strong class="d-block">Dommicilio: </strong>
+                {{user.userData.address.street}}, 
+                {{user.userData.address.suite}}
+            </li>
+            <li class="list-group-item">
+                <strong class="d-block">Cuidad: </strong> 
+                {{user.userData.address.city}}, 
+                {{user.userData.address.zipcode}}
+            </li>
+            <li class="list-group-item">
+                <strong class="d-block">Telefono: </strong> 
+                {{user.userData.phone}}
+            </li>
+            <li class="list-group-item">
+                <strong class="d-block">Sitio Web: </strong>
+                {{user.userData.website}}
+            </li>
+        </ul>
+    </section>
+    <hr class="d-md-none">
+    <section class="col">
+        <h4>Trabajo</h4>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <strong class="d-block">Empresa: </strong>
+                {{user.userData.company.name}}
+            </li>
+            <li class="list-group-item">
+                <strong class="d-block">Slogan:</strong>
+                {{user.userData.company.catchPhrase}}
+            </li>
+            <li class="list-group-item">
+                <strong class="d-block">Categoria: </strong>
+                {{user.userData.company.bs}}
+            </li>
+        </ul> 
+    </section>
+    <button class="btn btn-primary my-3" onclick="history.back()">Volver a la pagina anterior</button>
+</article>

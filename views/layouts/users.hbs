@@ -1,0 +1,21 @@
+<ul class="grid auto medium | p-3 gap-3 list-unstyled">
+{{#each users}}
+    <li class="col-md">
+        <ul class="card | list-unstyled">
+            <li class="card-header">
+                <strong class="card-title">{{this.username}}</strong>
+            </li>
+            <li class="card-body | d-flex justify-content-between align-items-center">
+                <p>
+                    <a href="mailto:{{this.email}}">{{this.email}}</a>
+                    <br>
+                    {{this.userData.lastName}}
+                    {{this.userData.firstName }}
+                    {{this.userData.name}}
+                </p>
+                <a class="btn btn-primary" href="/users/{{this.username}}">ver mas</a>
+            </li>
+        </ul>
+    </li>
+{{/each}}
+</ul>
