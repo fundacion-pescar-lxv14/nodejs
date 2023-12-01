@@ -8,7 +8,9 @@ export const getUsers = async (req, res) => {
         res.render('layouts/users', {...config, users: resolve(users)}) :
     users.length > 0 ?
         res.render('layouts/profile', {...config, user: resolve(users[0])}) :
-        res.render('layouts/404', {...config, message: "No se encontraron resultados"})
+        res.render('layouts/404', {
+            ...config, message: "No se encontraron resultados", err: "lamentablemente no se encontraron resultados para tu busqueda"
+        })
 }
 export const createUser = async (req, res) => {
     const user = new User(req.body);
