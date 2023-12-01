@@ -1,12 +1,5 @@
-{{#if message}}
-<div class="alert alert-{{type}}" role="alert">
-    <button class="btn-close float-end" data-bs-dismiss="alert"></button>
-    <h2 class="h4">{{message}}</h2>
-    <p>{{err}}</p>
-</div>
-{{/if}}
-
 <form action="/signin" method="post" class="col-md-8 col-lg-6 col-xxl-4 rounded shadow my-3 mx-auto p-4">
+    <h2 class="h4">Formulario de Registro</h2>
     <fieldset>
         <label for="username">Ingrese su Nombre de usuario</label>
         <input class="form-control" 
@@ -39,6 +32,8 @@
             type="password"
             required>
     </fieldset>
-    <a class="btn btn-success p-2" href="/login">Iniciar Sesion</a>
-    <button class="btn btn-primary p-2" type="submit">Registrarse</button>
+    <div class="d-flex gap-2 py-2">
+        <a class="col btn btn-success p-2" href="/login">Iniciar Sesion</a>
+        <button class="col btn btn-primary p-2" type="submit">Registrarse</button>
+    </div>
 </form>

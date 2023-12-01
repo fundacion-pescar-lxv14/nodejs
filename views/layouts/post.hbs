@@ -8,13 +8,13 @@
             <li>{{posts.stock}}</li>
             <li>{{posts.user}}</li>
         </ul>
-        <p> Publicado en 
-            {{posts.postDate}} 
-            por <a href="users/{{posts.user}}" class="btn btn-link px-1">{{posts.user}}</a>
+        <p class="m-0"> 
+            Publicado en {{posts.postDate}} por 
+            <a href="users/{{posts.user}}" class="btn btn-link px-1">{{posts.user}}</a>
         </p>
-        <ul class="d-flex flex-wrap">
+        <ul class="d-flex flex-wrap gap-1">
             {{#each posts.categories}}
-                <a class="badge rounded-pill bg-primary" href="/posts/categories/{{this}}">{{this}}</a>
+                <a class="badge rounded bg-primary text-decoration-none" href="/posts/categories/{{this}}">{{this}}</a>
             {{/each}}
         </ul>
     </div>            
