@@ -7,12 +7,17 @@
 
 /** Sintaxis de Modulos de ES6 */ 
 import Employee from './employee.class.js';
-import chai, { expect } from 'chai';
+import { expect } from 'chai';
 import mocha from 'mocha';
 import example from './employee.example.js';
 
 const employee = new Employee(example)
-const [fullname, antiquity, complement] = [ employee.getFullname(), employee.getAntiquity(), employee.getComplement() ]
+const [fullname, year, antiquity, complement] = [  
+    employee.getFullname(), 
+    employee.hiredAt.getFullYear(),
+    employee.getAntiquity(), 
+    employee.getComplement() 
+]
 
 describe('Verificacion de la Clase Empleado', () => {
     it('Creacion de Empleado', () => {
@@ -21,6 +26,10 @@ describe('Verificacion de la Clase Empleado', () => {
     it('Obtener nombre completo', () => {
         expect(fullname).to.equal('Perez Juan')
         expect(fullname).to.be.a('string')
+    })
+    it('Año de Contratacion', () =>{
+        expect(year).to.equal(2014)
+        expect(year).to.be.a('number')
     })
     it('Antigüedad expresada en años', () => {
         expect(antiquity).to.equal(9)
