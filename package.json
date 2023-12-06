@@ -27,6 +27,7 @@
   "homepage": "https://github.com/fundacion-pescar-lxv14/nodejs#readme",
   "devDependencies": {
     "typescript": "^5.3.2",
+    "@types/node": "^17.0.14",
     "chai": "^4.3.10",
     "mocha": "^10.2.0"
   }

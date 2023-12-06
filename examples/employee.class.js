@@ -1,5 +1,3 @@
-"use strict";
-
 var Employee = /** @class */ (function () {
     function Employee(e) {
         var _this = this;
@@ -26,4 +24,4 @@ var Employee = /** @class */ (function () {
     };
     return Employee;
 }());
-export default Employee;
+export { Employee };
