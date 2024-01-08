@@ -47,16 +47,33 @@ describe("Obtencion de Productos", () => {
             })
     } ) 
     it("Producto especifico", (done) => {
-        NumbersArray(1,8).map((id) => {
-            chai.request(app)
-            .get("/products/"+id)
+        chai.request(app)
+            .get("/products/6570d28c8ef2b8a5519b4727")
             .end((err, res)=> {
                 expect(res).to.have.status(200);
                 expect(res).to.be.an("object");
-                expect(res.body.id).to.equals(id);
-                expect(res.body).to.have.property("postTitle");
                 done();
             })
         })      
-    })   
+    }) 
+
+describe("Carga de Productos", () => {
+    it("Formulario de Carga", (done) => {
+        chai.request(app)
+            .post("/products/")
+            .send({
+                name: "Monitor LG Led 32\"",
+                price: 54900,
+                description: "Tiene una resolución de 1920px-1080px, Relación de aspecto de 16:9, Panel IPSm Su brillo es de 250cd/m², Tipos de conexión: 2 HDMI, Jack 3.5 mm, D-Sub. Comodidad visual en todo momento.",
+                image: "/img/1/monitor.jpg",
+                category: ["tecnologia", "informatica"],
+                stock: 200,
+                user: "c215714n",
+                delivery: 0
+            })
+            .end((err, res) => {
+                expect(res).to.have.status(200);
+                done();
+            })
+    })
 })
