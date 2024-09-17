@@ -1,4 +1,4 @@
-export const message = "Bienvenido a Pescar Shops"
+export const message = "Bienvenido a PescarTravels"
 
 export const NumbersArray = (ini, fin, step=1, arr = []) => {
     for (let i = ini; i <= fin; i+=step)  arr.push(i)
